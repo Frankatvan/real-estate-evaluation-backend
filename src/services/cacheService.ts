@@ -51,7 +51,7 @@ class CacheService {
    * Set value in cache
    */
   set<T>(key: string, value: T, ttl?: number): boolean {
-    const success = this.cache.set(key, value, ttl);
+    const success = this.cache.set(key, value, ttl as number);
     if (success) {
       logger.debug('Cache set successful', { key, ttl });
     }
@@ -108,7 +108,7 @@ class CacheService {
     const stats = this.cache.getStats();
 
     return {
-      keys: keys.length,
+      keyCount: keys.length,
       hitCount: this.hitCount,
       missCount: this.missCount,
       hitRate: this.hitCount / (this.hitCount + this.missCount) || 0,

@@ -82,7 +82,7 @@ export class ExcelParserService {
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
     const data = XLSX.utils.sheet_to_json(worksheet, { raw: false });
-    return data;
+    return data as ExcelRow[];
   }
 
   /**

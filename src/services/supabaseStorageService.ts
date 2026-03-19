@@ -157,14 +157,14 @@ class SupabaseStorageService {
 
       const metadata: FileMetadata = {
         name: filePath.split('/').pop() || 'unknown',
-        size: data.byteLength,
+        size: (data as any).byteLength || data.size || 0,
         type: 'application/octet-stream',
         uploadedAt: new Date()
       };
 
       logger.info('File downloaded successfully', {
         filePath,
-        size: data.byteLength
+        size: (data as any).byteLength || data.size || 0
       });
 
       return { data, metadata };
@@ -251,7 +251,7 @@ class SupabaseStorageService {
         name: file.name,
         size: file.metadata?.size || 0,
         type: file.metadata?.mimetype || 'application/octet-stream',
-        uploadedAt: new Date(file.created_at)
+        uploadedAt: file.created_at ? new Date(file.created_at) : new Date()
       };
     } catch (error: any) {
       logger.error('Get file metadata error', { error: error.message });

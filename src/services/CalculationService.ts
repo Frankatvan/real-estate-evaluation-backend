@@ -544,7 +544,7 @@ export class CalculationService {
       [versionId]
     );
 
-    return result.rows.map(row => ({
+    return result.rows.map((row: any) => ({
       year: row.year,
       projectCashFlow: Number(row.project_cash_flow),
       fundCashFlow: Number(row.fund_cash_flow),
