@@ -1,25 +1,14 @@
 {
   "version": 2,
-  "name": "real-estate-evaluation-api",
-  "builds": [
-    {
-      "src": "src/server.ts",
-      "use": "@vercel/node"
-    }
-  ],
+  "name": "real-estate-backend-api",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/server.ts"
+      "dest": "dist/server.js"
     }
   ],
-  "env": {
-    "NODE_ENV": "production",
-    "SUPABASE_URL": "@supabase-url",
-    "SUPABASE_ANON_KEY": "@supabase-anon-key",
-    "JWT_SECRET": "@jwt-secret",
-    "LOG_LEVEL": "info"
-  },
   "functions": {
     "src/**/*.ts": {
       "maxDuration": 60
