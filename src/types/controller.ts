@@ -56,7 +56,7 @@ export interface ApiResponse<T = any> {
  * User information attached to request
  */
 export interface RequestUser {
-  id: number;
+  id: string;
   username: string;
   email: string;
   role: string;

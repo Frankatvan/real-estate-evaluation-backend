@@ -10,7 +10,7 @@ declare global {
     interface Request {
       controller?: any;
       user?: {
-        id: number;
+        id: string;
         username: string;
         email: string;
         role: string;

@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express';
+import { FileFilterCallback } from 'multer';
 import multer from 'multer';
 import { Pool } from 'pg';
 import { ExcelParserService } from '../services/ExcelParserService';
@@ -16,7 +17,7 @@ const upload = multer({
   limits: {
     fileSize: 10 * 1024 * 1024, // 10MB limit
   },
-  fileFilter: (req, file, cb) => {
+  fileFilter: (req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
     // Accept Excel files
     const allowedMimes = [
       'application/vnd.ms-excel',

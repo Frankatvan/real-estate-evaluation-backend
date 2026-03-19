@@ -167,7 +167,7 @@ class SupabaseStorageService {
         size: (data as any).byteLength || data.size || 0
       });
 
-      return { data, metadata };
+      return { data: data as any, metadata };
     } catch (error: any) {
       logger.error('File download error', { error: error.message });
       throw error;
